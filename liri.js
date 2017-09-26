@@ -28,13 +28,18 @@ switch (action) {
  var params = {screen_name: "joeyfboone"};
  client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
- 
-   if (!error) {
-     console.log("Twitter Error in Response");
-   } 
 
-   console.log ("TWEETS :"+tweets);
-    console.log ("RESPONSE"+response)
+   if (!error) {
+     console.log("No Error");
+   } 
+for (var index = 0; index < 20; index++) {
+  console.log ("TWEET :", tweets[index].text);
+  console.log ("Created on: ", tweets[index].created_at);
+  console.log (" ");
+  
+}
+ 
+ 
 
   
  });
