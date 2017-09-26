@@ -58,9 +58,9 @@ for (var index = 0; index < 20; index++) {
   
     // Then split it by commas (to make it more readable)
     var dataARR = data.split(",");
-  console.log (dataARR);
+//  console.log (dataARR);
     // We will then re-display the content as an array for later use.
-    console.log(dataARR +" dataARR");
+ //   console.log(dataARR +" dataARR");
    song = dataARR[1];
     var spotify = new Spotify({
       id: '45a05553ea724e9d9ac91bc897ade877',
@@ -71,12 +71,11 @@ for (var index = 0; index < 20; index++) {
     
     .search({ type: "track", query: song, limit: 1})
       .then(function(response) {
-        console.log(response)
-        console.log("Artist: ", response[0]);
+        console.log("Artist: ", response.tracks.items[0].album.artists[0].name);
         console.log("Song Name: "+ song);
-        console.log("Link to Spotify: "+ response.external_urls);
-        console.log("Album: "+ response.name);
-        console.log("HTML:"+ response.href);
+        console.log("Link to Spotify: ", response.tracks.items[0].album.artists[0].href);
+        console.log("Album: ", response.tracks.items[0].album.name);
+
 
 
       })
