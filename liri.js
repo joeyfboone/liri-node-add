@@ -25,7 +25,7 @@ switch (action) {
    access_token_secret: twitterKeys.access_token_secret
  });
 
- var params = {screen_name: "joeyfboone"};
+ var params = {screen_name: "shawnmendes"};
  client.get('statuses/user_timeline', params, function(error, tweets, response) {
 
 
@@ -72,7 +72,7 @@ for (var index = 0; index < 20; index++) {
     .search({ type: "track", query: song, limit: 1})
       .then(function(response) {
         console.log(response)
-        console.log("Artist: "+response.tracksartists);
+        console.log("Artist: ", response[0]);
         console.log("Song Name: "+ song);
         console.log("Link to Spotify: "+ response.external_urls);
         console.log("Album: "+ response.name);
