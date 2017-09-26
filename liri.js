@@ -24,12 +24,16 @@ switch (action) {
    access_token_key: twitterKeys.access_token_key,
    access_token_secret: twitterKeys.access_token_secret
  });
-  
- var params = {screen_name: 'liri.js'};
+
+ var params = {screen_name: "joeyfboone"};
  client.get('statuses/user_timeline', params, function(error, tweets, response) {
+
+ 
    if (!error) {
      console.log("Twitter Error in Response");
-   } console.log (tweets);
+   } 
+
+   console.log ("TWEETS :"+tweets);
     console.log ("RESPONSE"+response)
 
   
@@ -52,21 +56,22 @@ switch (action) {
   console.log (dataARR);
     // We will then re-display the content as an array for later use.
     console.log(dataARR +" dataARR");
-   song = dataARR[1]
+   song = dataARR[1];
     var spotify = new Spotify({
-      id: "45a05553ea724e9d9ac91bc897ade877",
-      secret: "f4498079e8e24d259048787e2d690ddd"
+      id: '45a05553ea724e9d9ac91bc897ade877',
+      secret: 'f4498079e8e24d259048787e2d690ddd'
     });
      
     spotify
     
-    .search({ type: "track", query: song })
+    .search({ type: "track", query: song, limit: 1})
       .then(function(response) {
-        console.log("Artist: "+response.artists);
+        console.log(response)
+        console.log("Artist: "+response.tracksartists);
         console.log("Song Name: "+ song);
         console.log("Link to Spotify: "+ response.external_urls);
         console.log("Album: "+ response.name);
-        console.log(response.href);
+        console.log("HTML:"+ response.href);
 
 
       })
@@ -87,8 +92,14 @@ switch (action) {
  
  //  * `movie-this`
  case "movie-this":
+ var movie = "";
          // Here we grab the text from the input box
-         var movie = process.argv[3];
+        if (process.argv[3] === undefined) {movie = "Mr. Nobody";
+          
+        } else {
+          movie = process.argv[3];
+        }
+         
 
 // Then run a request to the OMDB API with the movie specified
 request("https://www.omdbapi.com/?t=" + movie + "&y=&plot=short&apikey=40e9cece", function(error, response, body) {
